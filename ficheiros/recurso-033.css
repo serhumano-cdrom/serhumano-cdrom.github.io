@@ -1,0 +1,4 @@
+a:active     { font-family: arial; font-size: 10pt; font-weight: bold; text-decoration:none; color:#000066 }
+a:link       { font-family: arial; font-size: 10pt; font-weight: bold; text-decoration:none; color:#000066 }
+a:visited    { font-family: arial; font-size: 10pt; font-weight: bold; text-decoration:none; color:#000066 }
+a:hover      { font-family: Arial; font-size: 10pt; font-weight: bold; text-decoration:underline; color:#0000CC }

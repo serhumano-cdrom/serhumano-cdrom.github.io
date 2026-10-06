@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>O que é ser humano? v1.0</title>
+<style>
+html,body{margin:0;width:100%;height:100%;background:#B8B3A3;overflow:hidden}
+#cd{display:block;width:100%;height:100%;border:0}
+#opening{box-sizing:border-box;width:min(740px,calc(100vw - 32px));max-height:calc(100vh - 32px);padding:16px;border:4px double #111;background:#B8B3A3;color:#000066;text-align:center;overflow:auto;font:14px Arial}
+#opening::backdrop{background:rgba(0,0,0,.65)}
+#opening h1{font:bold 18px Verdana;margin:0 0 14px}
+#film{display:block;width:100%;max-height:calc(100vh - 190px);background:#111;object-fit:contain;margin:auto}
+.actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:16px 0 0}
+.actions button,.actions a{box-sizing:border-box;background:#e5e2d9;color:#000066;border:2px outset #ddd;padding:8px 18px;font:bold 13px Arial;text-decoration:none;cursor:pointer}
+.actions button:focus-visible,.actions a:focus-visible{outline:2px solid #000066;outline-offset:3px}
+[hidden]{display:none!important}
+@media(max-height:450px){#opening{padding:8px}#opening h1{margin-bottom:8px}#film{max-height:calc(100vh - 140px)}.actions{margin-top:8px}}
+</style></head><body>
+<iframe id="cd" src="ficheiros/recurso-004.html" title="CD-ROM O que é ser humano?"></iframe>
+<dialog id="opening" aria-labelledby="opening-title">
+<h1 id="opening-title">O que é ser humano? / What is it to be human?</h1>
+<video id="film" controls playsinline preload="metadata" poster="ficheiros/recurso-003.jpg" src="ficheiros/abertura.mp4"></video>
+<div class="actions"><button id="watch" type="button">Ver abertura / Watch opening</button><a id="enter" href="ficheiros/recurso-004.html">Entrar / Enter</a></div>
+</dialog>
+<script>
+const opening=document.getElementById('opening'),film=document.getElementById('film'),watch=document.getElementById('watch');
+function enter(){film.pause();opening.close();document.getElementById('cd').focus();}
+document.getElementById('enter').addEventListener('click',function(e){e.preventDefault();enter();});
+opening.addEventListener('cancel',function(e){e.preventDefault();enter();});
+film.addEventListener('ended',enter);
+film.addEventListener('play',function(){watch.hidden=true;});
+watch.addEventListener('click',function(){film.play().catch(function(){watch.hidden=false;});});
+opening.showModal();
+film.play().catch(function(){watch.hidden=false;});
+</script></body></html>
